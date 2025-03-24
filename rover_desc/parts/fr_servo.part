@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "3d141df5b6c1cada8f38db73",
+    "documentMicroversion": "0e1df2a442ffeed71739eafb",
+    "elementId": "f4e590f83700d9bcd014df85",
+    "fullConfiguration": "default",
+    "id": "MJlMieK9CSEcrXJzq",
+    "isStandardContent": false,
+    "name": "FR_Servo <1>",
+    "partId": "KFPV",
+    "suppressed": false,
+    "type": "Part"
+}

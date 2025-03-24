@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <!-- IMU Macro -->
+    <xacro:macro name="imu_sensor" params="parent *origin">
+        <!-- IMU Link -->
+        <link name="imu_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.02 0.01"/>
+                </geometry>
+                <material name="imu_material">
+                    <color rgba="0.7 0.7 0.7 1"/>
+                </material>
+            </visual>
+            
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.02 0.01"/>
+                </geometry>
+            </collision>
+            
+            <inertial>
+                <mass value="0.015"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia ixx="1.0e-6" ixy="0.0" ixz="0.0"
+                         iyy="1.0e-6" iyz="0.0" 
+                         izz="1.0e-6"/>
+            </inertial>
+        </link>
+
+        <!-- IMU Joint -->
+        <joint name="imu_joint" type="fixed">
+            <parent link="${parent}"/>
+            <child link="imu_link"/>
+            <xacro:insert_block name="origin"/>
+        </joint>
+
+        <!-- Gazebo IMU Plugin Configuration -->
+        <gazebo reference="imu_link">
+            <sensor name="imu_sensor" type="imu">
+                <always_on>true</always_on>
+                <update_rate>100</update_rate>
+                <visualize>true</visualize>
+                <topic>imu/data</topic>
+                
+                <!-- IMU without Noise -->
+                <imu>
+                    <angular_velocity>
+                        <x/>
+                        <y/>
+                        <z/>
+                    </angular_velocity>
+                    
+                    <linear_acceleration>
+                        <x/>
+                        <y/>
+                        <z/>
+                    </linear_acceleration>
+                </imu>
+                
+                <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+                    <ros>
+                        <namespace>/</namespace>
+                        <remapping>~/out:=imu/data</remapping>
+                    </ros>
+                    <initial_orientation_as_reference>false</initial_orientation_as_reference>
+                    <frame_name>rover_base</frame_name>
+                </plugin>
+            </sensor>
+        </gazebo>
+    </xacro:macro>
+</robot>
