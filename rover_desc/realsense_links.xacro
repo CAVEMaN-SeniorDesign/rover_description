@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- D435 Camera macro -->
+  <xacro:macro name="realsense_d435" params="parent *origin">
+    <!-- Create camera joint -->
+    <joint name="realsense_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="realsense_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <!-- Camera link -->
+    <link name="realsense_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+        <geometry>
+          <mesh filename="file://$(find realsense2_description)/meshes/d435.dae"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+        <geometry>
+          <box size="0.02505 0.090 0.025"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.564"/>
+        <inertia 
+          ixx="0.001" ixy="0.000" ixz="0.000"
+          iyy="0.001" iyz="0.000" izz="0.001"/>
+      </inertial>
+    </link>
+
+  </xacro:macro>
+</robot>
