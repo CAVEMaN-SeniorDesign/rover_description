@@ -3,21 +3,5 @@
     
     <!-- URDF & Visual -->
     <xacro:include filename="$(find rover_description)/rover_desc/parts/robot.urdf" />
-    <xacro:include filename="$(find rover_description)/rover_desc/gazebo_params.xacro" />
-
-    <xacro:include filename="$(find rover_description)/rover_desc/realsense.urdf" />
-
-    <xacro:include filename="$(find rover_description)/rover_desc/gz_realsense.xacro"/>
-
-    <xacro:realsense_d435 parent="imager_3">
-        <origin xyz="-0.0325 0 -0.005" rpy="${pi/2} ${pi/2} ${0}"/>
-    </xacro:realsense_d435>
-
-
-    <!-- Include ros2_control -->
-    <xacro:include filename="$(find rover_gz)/plugins/ros2_control.xacro" />
-    <xacro:include filename="$(find rover_description)/rover_desc/imu.xacro" />
-    <xacro:imu_sensor parent="rover_base">
-        <origin xyz="0.28136771400569077217 -0.651070713998295858 0.42390609907984444504" rpy="0 0 0"/>
-    </xacro:imu_sensor>
 </robot>
+
