@@ -3,11 +3,11 @@
 <joint name="base_link_to_body" type="fixed">
 <parent link="base_link"/>
 <child link="body" />
-<origin rpy="0.0 0 +1.570796" xyz="0 0 0"/>
+<origin xyz="0 0 0" rpy="0 0 1.5707963267948952257" />
 </joint>
 <link name="body">
 <visual>
-<origin xyz="0.47136771400569088541 -0.60607071399829648417 0.26237109907984434987" rpy="-1.5707963267948952257 -2.20865769322149327e-16 3.1415926535897922278" />
+<origin xyz="0 0 0" rpy="-1.5707963267948952257 -2.20865769322149327e-16 3.1415926535897922278" />
 <geometry>
 <mesh filename="package://rover_description/rover_desc/parts/body.stl"/>
 </geometry>

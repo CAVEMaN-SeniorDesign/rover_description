@@ -2,6 +2,27 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="rover">
     
     <!-- URDF & Visual -->
-    <xacro:include filename="$(find rover_description)/rover_desc/parts/robot.urdf" />
+    <!-- <xacro:include filename="$(find rover_description)/rover_desc/realsense.urdf" /> -->
+    <xacro:include filename="$(find rover_description)/rover_desc/_d435.urdf.xacro" />
+    <link name="base_link">
+    </link>
+    <xacro:sensor_d435
+        parent="base_link"
+        name="camera"
+        use_nominal_extrinsics="true"
+        add_plug="false"
+        use_mesh="true">
+        <origin xyz="0.47136771400569088541 -0.60607071399829648417 0.26237109907984434987" rpy="0 0 0"/>
+    </xacro:sensor_d435>
+    <!-- <xacro:include filename="$(find rover_description)/rover_desc/parts/robot.urdf" /> -->
+
+    <!-- <link name="camera_link"></link>
+
+    <joint name="camera_link_joint" type="fixed">
+        <parent link="rs_pitch" />
+        <child link="camera_link" />
+        <origin xyz="0 0 0.1 " rpy="0 0 0" />
+    </joint> -->
+
 </robot>
 
